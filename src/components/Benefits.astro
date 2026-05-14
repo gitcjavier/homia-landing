@@ -1,0 +1,55 @@
+---
+const benefits = [
+  {
+    n: "i.",
+    title: "Primera impresión que retiene",
+    desc: "Tus avisos detienen el scroll en lugar de pasar inadvertidos entre cientos de publicaciones.",
+  },
+  {
+    n: "ii.",
+    title: "Más consultas y mejor calidad",
+    desc: "Las propiedades bien presentadas reciben preguntas más serias y de gente más decidida.",
+  },
+  {
+    n: "iii.",
+    title: "Equipo comercial enfocado",
+    desc: "Tu equipo dedica tiempo a cerrar negocios, no a editar fotos en el celular entre visitas.",
+  },
+  {
+    n: "iv.",
+    title: "Imagen consistente de marca",
+    desc: "Cada propiedad se publica con el mismo estándar visual, fortaleciendo tu identidad como corredor o agencia.",
+  },
+  {
+    n: "v.",
+    title: "Publicaciones para cada canal",
+    desc: "Lo mismo se ve correcto en Mercado Libre, Portal Inmobiliario, Instagram y tu web.",
+  },
+  {
+    n: "vi.",
+    title: "Menos tiempo en cartera",
+    desc: "Propiedades que se ven mejor desde el aviso se arriendan y venden más rápido, con menos rebajas.",
+  },
+];
+---
+
+<section class="benefits section-pad">
+  <div class="container">
+    <div class="s-head" data-reveal>
+      <h2 class="serif">Lo que <em>realmente</em> cambia.</h2>
+      <p class="s-intro">
+        No vendemos retoque por retoque. Vendemos consultas, visitas y negocios cerrados más
+        rápido. Estas son las cosas que nuestros clientes notan dentro del primer mes.
+      </p>
+    </div>
+    <div class="benefit-grid" data-reveal>
+      {benefits.map((b) => (
+        <div class="benefit">
+          <div class="b-num serif">{b.n}</div>
+          <h4 class="serif">{b.title}</h4>
+          <p>{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'FotoProp Studio · Fotos inmobiliarias que venden mejor',
+  description = 'Editamos fotos de departamentos, creamos carruseles para Instagram y preparamos publicaciones listas para portales inmobiliarios.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+    <!-- Prevent dark mode flash -->
+    <script is:inline>
+      (function () {
+        try {
+          const theme = localStorage.getItem('fpTheme') || 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <slot />
+
+    <!-- Scroll reveal -->
+    <script>
+      function initReveal() {
+        const els = document.querySelectorAll('[data-reveal]');
+        const reveal = (el: Element) => requestAnimationFrame(() => el.classList.add('in'));
+
+        els.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92 && r.bottom > 0) reveal(el);
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+
+        els.forEach((el) => {
+          if (!el.classList.contains('in')) io.observe(el);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initReveal);
+    </script>
+  </body>
+</html>

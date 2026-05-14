@@ -1,0 +1,32 @@
+---
+const items = [
+  "Mercado Libre Inmuebles",
+  "Portal Inmobiliario",
+  "Yapo",
+  "TocToc",
+  "Instagram",
+  "Properati",
+];
+const doubled = [...items, ...items];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>
+      {doubled.map((item, i) => (
+        <>
+          <span>{item}</span>
+          <span class="sep"></span>
+        </>
+      ))}
+    </span>
+    <span aria-hidden="true">
+      {doubled.map((item, i) => (
+        <>
+          <span>{item}</span>
+          <span class="sep"></span>
+        </>
+      ))}
+    </span>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+---
+const services = [
+  {
+    n: "01",
+    title: "Edición fotográfica inmobiliaria",
+    desc: "Corrección de luz, color, perspectiva, encuadre y nitidez. Cada foto sale lista para publicar y para imprimir.",
+    meta: ["Hasta 24h", "Hasta 30 fotos"],
+    img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80&auto=format&fit=crop",
+  },
+  {
+    n: "02",
+    title: "Carruseles para Instagram",
+    desc: "Diseñamos secuencias de 4 a 10 slides pensadas para captar atención, mostrar la propiedad y cerrar con un llamado claro.",
+    meta: ["4–10 slides", "Formato 4:5"],
+    img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format&fit=crop",
+  },
+  {
+    n: "03",
+    title: "Descripciones persuasivas",
+    desc: "Textos breves, claros y vendedores. Resaltamos lo que importa, en tono chileno, sin caer en clichés.",
+    meta: ["Bilingüe opcional", "Hasta 3 versiones"],
+    img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format&fit=crop",
+  },
+  {
+    n: "04",
+    title: "Publicaciones para Mercado Libre",
+    desc: "Adaptamos el material para portales: orden de fotos, dimensiones correctas y descripción optimizada por filtros.",
+    meta: ["Listo para subir", "ML, Portal, Yapo"],
+    img: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=900&q=80&auto=format&fit=crop",
+  },
+];
+---
+
+<section class="section-pad" id="servicios">
+  <div class="container">
+    <div class="s-head" data-reveal>
+      <h2 class="serif">Cuatro piezas, <em>una sola entrega.</em></h2>
+      <p class="s-intro">
+        Todo lo que necesitas para publicar una propiedad bien presentada: la foto editada, el
+        carrusel, la descripción y el archivo listo para portales. Puedes pedir cada servicio
+        por separado o tomarlo completo.
+      </p>
+    </div>
+    <div class="services-grid" data-reveal>
+      {services.map((s) => (
+        <article class="service">
+          <div class="service-num serif">{s.n} / 04</div>
+          <h3 class="serif">{s.title}</h3>
+          <p>{s.desc}</p>
+          <div class="s-meta">
+            {s.meta.map((m) => (
+              <span>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <circle cx="5" cy="5" r="2.5" fill="currentColor" opacity=".5" />
+                </svg>
+                {m}
+              </span>
+            ))}
+          </div>
+          <div class="service-thumb">
+            <img src={s.img} alt="" loading="lazy" />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

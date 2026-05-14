@@ -1,0 +1,56 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Envías tus fotos",
+    desc: "Por WhatsApp, Drive o el formulario. Acepta fotos de teléfono y de cámara, en cualquier orden.",
+  },
+  {
+    n: "02",
+    title: "Editamos el material",
+    desc: "Luz, color, perspectiva y orden. Limpiamos detalles y dejamos cada foto lista para publicar.",
+  },
+  {
+    n: "03",
+    title: "Armamos carrusel y texto",
+    desc: "Diseñamos los slides de Instagram y escribimos la descripción para portales en tono chileno claro.",
+  },
+  {
+    n: "04",
+    title: "Recibes todo listo",
+    desc: "Carpeta organizada con fotos, carrusel, descripción y archivos optimizados para cada plataforma.",
+  },
+];
+---
+
+<section class="section-pad" id="proceso">
+  <div class="container">
+    <div class="s-head" data-reveal>
+      <h2 class="serif">Un proceso <em>simple,</em> sin idas y vueltas.</h2>
+      <p class="s-intro">
+        Trabajamos directo con corredores y agencias. Sin briefs interminables ni cadenas de
+        correos: tú envías, nosotros editamos, tú publicas.
+      </p>
+    </div>
+    <div class="process-list" data-reveal>
+      {steps.map((s) => (
+        <div class="process-step">
+          <div class="process-num serif">{s.n}</div>
+          <h3 class="serif">{s.title}</h3>
+          <p>{s.desc}</p>
+          <div class="pico">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M1 7h12M8 2l5 5-5 5"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
