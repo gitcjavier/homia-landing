@@ -1206,6 +1206,7 @@ section { position: relative; }
   padding: 6px 12px;
   border-radius: 100px;
   font-weight: 500;
+  white-space: nowrap;
 }
 .p-eyebrow {
   font-size: 11px;
@@ -1476,6 +1477,269 @@ footer {
 .wa-float:hover { transform: translateY(-3px) scale(1.05); }
 .wa-float svg { width: 28px; height: 28px; }
 
+/* Quote module */
+.quote-section { background: var(--bg); }
+.quote-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(32px, 4vw, 64px);
+  align-items: stretch;
+}
+.quote-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.qa-block {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.qa-block:last-child { border-bottom: 0; padding-bottom: 0; }
+.qa-block .eyebrow { margin-bottom: 20px; }
+.qa-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.qa-list li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.qa-list .qx {
+  font-style: italic;
+  color: var(--green);
+  font-size: 14px;
+}
+.qa-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.qa-stats > div {
+  background: var(--bg-warm);
+  padding: 18px 20px;
+  border-radius: var(--radius);
+}
+.qa-num {
+  font-size: 32px;
+  letter-spacing: -.025em;
+  font-weight: 380;
+  line-height: 1;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 6px;
+}
+.qa-lbl {
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.quote-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: var(--shadow-md);
+}
+.qf-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+.qf-head h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 2.8vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -.022em;
+  font-weight: 380;
+}
+.qf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.qf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.qf-lbl {
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.qf-lbl small {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-left: 6px;
+  font-weight: 400;
+  opacity: .75;
+}
+.qf-field input,
+.qf-field textarea {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0 12px;
+  outline: none;
+  transition: border-color .25s ease;
+  resize: vertical;
+}
+.qf-field input::placeholder,
+.qf-field textarea::placeholder {
+  color: var(--muted);
+  opacity: .65;
+}
+.qf-field input:focus,
+.qf-field textarea:focus {
+  border-bottom-color: var(--green);
+}
+.qf-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.qf-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color .2s, background-color .2s;
+  color: var(--ink);
+}
+.qf-chip:hover { border-color: var(--ink); }
+.qf-chip.on {
+  border-color: var(--green);
+  background: color-mix(in srgb, var(--green) 6%, var(--surface));
+}
+[data-theme="dark"] .qf-chip.on { background: color-mix(in srgb, var(--green) 18%, var(--surface)); }
+.qf-chip-tick {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  margin-top: 2px;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.qf-chip.on .qf-chip-tick {
+  background: var(--green);
+  border-color: var(--green);
+  color: #F6F3EC;
+}
+.qf-chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.qf-chip-text b {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.qf-chip-text small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+.qf-segm {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 4px;
+  width: fit-content;
+  gap: 2px;
+  background: var(--bg);
+}
+.qf-segm button {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 9px 18px;
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: background-color .2s, color .2s;
+  font-feature-settings: "tnum";
+}
+.qf-segm button.on {
+  background: var(--ink);
+  color: var(--bg);
+}
+.qf-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.qf-fine {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+  letter-spacing: .01em;
+}
+
+.qf-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 16px 0;
+}
+.qf-check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #F6F3EC;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+}
+.qf-success h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -.022em;
+  font-weight: 380;
+  line-height: 1.05;
+}
+.qf-success p {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 50ch;
+}
+
 /* Subtle reveal animation */
 @keyframes reveal-in {
   from { opacity: 0; transform: translateY(24px); }
@@ -1503,6 +1767,9 @@ footer {
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .split-body { grid-template-columns: 1fr; gap: 32px; }
+  .quote-grid { grid-template-columns: 1fr; }
+  .qf-row { grid-template-columns: 1fr; }
+  .qf-chips { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   :root { --pad-x: 20px; }

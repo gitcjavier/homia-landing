@@ -55,8 +55,8 @@ export default function Nav() {
         <a href="#proceso" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
           Proceso
         </a>
-        <a href="#planes" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
-          Planes
+        <a href="#cotizar" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
+          Cotizar
         </a>
         <button
           className="cta-mini"
