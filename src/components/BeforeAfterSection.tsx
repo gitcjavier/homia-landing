@@ -13,26 +13,26 @@ const ROOMS: Room[] = [
   {
     key: 'living',
     caption: 'Living',
-    before: `${BA_BASE}/living-before.jpg`,
-    after: `${BA_BASE}/living-after.png`,
+    before: `${BA_BASE}/living-before.webp`,
+    after: `${BA_BASE}/living-after.webp`,
   },
   {
     key: 'cocina',
     caption: 'Cocina',
-    before: `${BA_BASE}/cocina-before.jpg`,
-    after: `${BA_BASE}/cocina-after.png`,
+    before: `${BA_BASE}/cocina-before.webp`,
+    after: `${BA_BASE}/cocina-after.webp`,
   },
   {
     key: 'dormitorio',
     caption: 'Dormitorio',
-    before: `${BA_BASE}/dormitorio-before.jpg`,
-    after: `${BA_BASE}/dormitorio-after.png`,
+    before: `${BA_BASE}/dormitorio-before.webp`,
+    after: `${BA_BASE}/dormitorio-after.webp`,
   },
   {
     key: 'oficina',
     caption: 'Oficina',
-    before: `${BA_BASE}/oficina-before.jpg`,
-    after: `${BA_BASE}/oficina-after.png`,
+    before: `${BA_BASE}/oficina-before.webp`,
+    after: `${BA_BASE}/oficina-after.webp`,
   },
 ];
 
