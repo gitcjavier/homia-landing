@@ -94,8 +94,8 @@ function BASlider({ before, after }: BAProps) {
       <div className="ba-img ba-after">
         <img src={after} alt="" draggable={false} loading="lazy" />
       </div>
-      <div className="ba-tag left">Antes</div>
-      <div className="ba-tag right">Después</div>
+      <div className="ba-tag left">Después</div>
+      <div className="ba-tag right">Antes</div>
       <div className="ba-handle" />
       <div className="ba-knob" />
     </div>
