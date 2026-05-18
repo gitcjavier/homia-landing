@@ -663,31 +663,6 @@ section { position: relative; }
 
 /* Before / after */
 .ba-section { background: var(--bg-warm); }
-.ba-controls {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 36px;
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 5px;
-  width: fit-content;
-  background: var(--surface);
-}
-.ba-controls button {
-  border: 0;
-  background: transparent;
-  font-family: inherit;
-  font-size: 13px;
-  padding: 9px 18px;
-  border-radius: 100px;
-  cursor: pointer;
-  color: var(--muted);
-  transition: background-color .2s, color .2s;
-}
-.ba-controls button.active {
-  background: var(--ink);
-  color: var(--bg);
-}
 .ba-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -702,7 +677,6 @@ section { position: relative; }
   user-select: none;
   cursor: ew-resize;
 }
-.ba-card.toggle, .ba-card.hover { cursor: default; }
 .ba-card .ba-img {
   position: absolute;
   inset: 0;
@@ -769,61 +743,6 @@ section { position: relative; }
 }
 .ba-card .ba-tag.left { left: 16px; }
 .ba-card .ba-tag.right { right: 16px; }
-
-/* Toggle variant */
-.ba-card.toggle .ba-after { opacity: var(--show-after, 1); transition: opacity .5s ease; }
-.ba-card.toggle .ba-before { opacity: 1; }
-.ba-toggle-btns {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 4px;
-  background: rgba(20, 32, 28, .7);
-  border-radius: 100px;
-  padding: 4px;
-  backdrop-filter: blur(8px);
-  z-index: 2;
-}
-.ba-toggle-btns button {
-  border: 0;
-  background: transparent;
-  color: rgba(246, 243, 236, .65);
-  font-family: inherit;
-  font-size: 11.5px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: background-color .2s, color .2s;
-}
-.ba-toggle-btns button.active {
-  background: #F6F3EC;
-  color: var(--ink);
-}
-
-/* Hover variant */
-.ba-card.hover .ba-after { opacity: 0; transition: opacity .5s ease; }
-.ba-card.hover:hover .ba-after { opacity: 1; }
-.ba-card.hover::after {
-  content: "Hover";
-  position: absolute;
-  bottom: 16px; left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 14px;
-  background: rgba(20, 32, 28, .7);
-  color: #F6F3EC;
-  font-size: 10.5px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  backdrop-filter: blur(8px);
-  opacity: 1;
-  transition: opacity .3s;
-}
-.ba-card.hover:hover::after { opacity: 0; }
 
 .ba-caption {
   font-size: 13px;
