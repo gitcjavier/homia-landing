@@ -1,21 +1,51 @@
 import { useState, useRef, useEffect } from 'react';
 
-const PHOTOS = {
-  ba1: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85&auto=format&fit=crop',
-  ba2: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1000&q=85&auto=format&fit=crop',
-  ba3: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1000&q=85&auto=format&fit=crop',
+const BA_BASE = '/images/before-after';
+
+type Room = {
+  key: string;
+  caption: string;
+  before: string;
+  after: string;
 };
+
+const ROOMS: Room[] = [
+  {
+    key: 'living',
+    caption: 'Living',
+    before: `${BA_BASE}/living-before.jpg`,
+    after: `${BA_BASE}/living-after.png`,
+  },
+  {
+    key: 'cocina',
+    caption: 'Cocina',
+    before: `${BA_BASE}/cocina-before.jpg`,
+    after: `${BA_BASE}/cocina-after.png`,
+  },
+  {
+    key: 'dormitorio',
+    caption: 'Dormitorio',
+    before: `${BA_BASE}/dormitorio-before.jpg`,
+    after: `${BA_BASE}/dormitorio-after.png`,
+  },
+  {
+    key: 'oficina',
+    caption: 'Oficina',
+    before: `${BA_BASE}/oficina-before.jpg`,
+    after: `${BA_BASE}/oficina-after.png`,
+  },
+];
 
 type Mode = 'slider' | 'toggle' | 'hover';
 
-// ── Slider ──────────────────────────────────────────────────────────────────
-function BASlider({
-  image,
-  className = '',
-}: {
-  image: string;
+type BAProps = {
+  before: string;
+  after: string;
   className?: string;
-}) {
+};
+
+// ── Slider ──────────────────────────────────────────────────────────────────
+function BASlider({ before, after, className = '' }: BAProps) {
   const [pct, setPct] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
@@ -63,10 +93,10 @@ function BASlider({
       onTouchStart={onDown}
     >
       <div className="ba-img ba-before">
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={before} alt="" draggable={false} loading="lazy" />
       </div>
       <div className="ba-img ba-after">
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={after} alt="" draggable={false} loading="lazy" />
       </div>
       <div className="ba-tag left">Antes</div>
       <div className="ba-tag right">Después</div>
@@ -77,18 +107,12 @@ function BASlider({
 }
 
 // ── Toggle ───────────────────────────────────────────────────────────────────
-function BAToggle({
-  image,
-  className = '',
-}: {
-  image: string;
-  className?: string;
-}) {
+function BAToggle({ before, after, className = '' }: BAProps) {
   const [view, setView] = useState<'before' | 'after'>('after');
   return (
     <div className={`ba-card toggle ${className}`}>
       <div className="ba-img ba-before">
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={before} alt="" draggable={false} loading="lazy" />
       </div>
       <div
         className="ba-img ba-after"
@@ -97,7 +121,7 @@ function BAToggle({
           opacity: view === 'after' ? 1 : 0,
         } as React.CSSProperties}
       >
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={after} alt="" draggable={false} loading="lazy" />
       </div>
       <div className="ba-tag left">{view === 'after' ? 'Después' : 'Antes'}</div>
       <div className="ba-toggle-btns">
@@ -113,20 +137,14 @@ function BAToggle({
 }
 
 // ── Hover ────────────────────────────────────────────────────────────────────
-function BAHover({
-  image,
-  className = '',
-}: {
-  image: string;
-  className?: string;
-}) {
+function BAHover({ before, after, className = '' }: BAProps) {
   return (
     <div className={`ba-card hover ${className}`}>
       <div className="ba-img ba-before">
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={before} alt="" draggable={false} loading="lazy" />
       </div>
       <div className="ba-img ba-after">
-        <img src={image} alt="" draggable={false} loading="lazy" />
+        <img src={after} alt="" draggable={false} loading="lazy" />
       </div>
       <div className="ba-tag left">Pasa el cursor</div>
     </div>
@@ -134,18 +152,10 @@ function BAHover({
 }
 
 // ── Dispatcher ───────────────────────────────────────────────────────────────
-function BeforeAfter({
-  mode,
-  image,
-  className,
-}: {
-  mode: Mode;
-  image: string;
-  className?: string;
-}) {
-  if (mode === 'toggle') return <BAToggle image={image} className={className} />;
-  if (mode === 'hover') return <BAHover image={image} className={className} />;
-  return <BASlider image={image} className={className} />;
+function BeforeAfter({ mode, before, after, className }: BAProps & { mode: Mode }) {
+  if (mode === 'toggle') return <BAToggle before={before} after={after} className={className} />;
+  if (mode === 'hover') return <BAHover before={before} after={after} className={className} />;
+  return <BASlider before={before} after={after} className={className} />;
 }
 
 // ── Section ──────────────────────────────────────────────────────────────────
@@ -179,20 +189,12 @@ export default function BeforeAfterSection() {
         </div>
 
         <div className="ba-grid" data-reveal="">
-          <div>
-            <BeforeAfter mode={mode} image={PHOTOS.ba1} />
-            <div className="ba-caption">Living principal · Las Condes, 78 m²</div>
-          </div>
-          <div className="ba-side">
-            <div>
-              <BeforeAfter mode={mode} image={PHOTOS.ba2} className="tall" />
-              <div className="ba-caption">Dormitorio · Ñuñoa</div>
+          {ROOMS.map((room) => (
+            <div key={room.key}>
+              <BeforeAfter mode={mode} before={room.before} after={room.after} />
+              <div className="ba-caption">{room.caption}</div>
             </div>
-            <div>
-              <BeforeAfter mode={mode} image={PHOTOS.ba3} />
-              <div className="ba-caption">Cocina · Providencia</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
