@@ -2,8 +2,6 @@
 
 Landing page para **Homia Studio**, estudio de edición fotográfica inmobiliaria en Santiago, Chile. Diseñada con estética editorial de revista de arquitectura.
 
-![Hero](https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop)
-
 ---
 
 ## Stack
@@ -22,10 +20,10 @@ Landing page para **Homia Studio**, estudio de edición fotográfica inmobiliari
 
 - **Hero full-bleed** con foto inmobiliaria, overlay editorial y métricas clave
 - **Marquee animado** con portales: Mercado Libre, Portal Inmobiliario, Yapo, TocToc
-- **Antes / Después interactivo** con 3 modos: slider arrastrable, toggle y hover
+- **Antes / Después** con slider arrastrable (4 habitaciones reales, WebP)
 - **Mockup de Instagram** con carrusel auto-rotante (4 slides)
-- **Secciones completas:** Problema, Solución, Servicios, Proceso, Beneficios, Precios, Testimonios y CTA
-- **Planes en UF** (Edición, Pro, Estudio) sin contratos ni mensualidades
+- **Cotizador a medida** — formulario con chips de servicios y segmented control de cantidad de fotos
+- **Secciones:** Problema, Antes/Después, Servicios, Instagram, Proceso, Cotización
 - **Dark mode / Light mode** con toggle en la nav, persistido en `localStorage`
 - **Nav adaptativa:** texto blanco sobre el hero oscuro, glassmorphism al hacer scroll
 - **Botón flotante de WhatsApp**
@@ -55,30 +53,28 @@ Tinta            #14201C   --ink
 ```
 src/
 ├── styles/
-│   └── global.css              # Tokens @theme Tailwind v4 + CSS del sistema de diseño
+│   └── global.css                 # Tokens @theme Tailwind v4 + CSS del sistema de diseño
 ├── layouts/
-│   └── Layout.astro            # HTML shell, fuentes, anti-FOUC dark mode, reveal script
+│   └── Layout.astro               # HTML shell, fuentes, anti-FOUC dark mode, reveal script
 ├── pages/
-│   └── index.astro             # Página principal — ensambla todos los componentes
+│   └── index.astro                # Página principal — ensambla todos los componentes
 └── components/
-    ├── Nav.tsx                 # React — scroll blur, menú móvil, dark/light toggle
-    ├── BeforeAfterSection.tsx  # React — comparador slider / toggle / hover
-    ├── InstagramShowcase.tsx   # React — carrusel auto-rotante en mockup iPhone
+    ├── Nav.tsx                    # React — scroll blur, menú móvil, dark/light toggle
     ├── Hero.astro
     ├── Marquee.astro
     ├── Problem.astro
-    ├── Solution.astro
+    ├── BeforeAfterSection.tsx     # React — comparador slider arrastrable
     ├── Services.astro
+    ├── InstagramShowcase.tsx      # React — carrusel auto-rotante en mockup iPhone
     ├── Process.astro
-    ├── Benefits.astro
-    ├── Pricing.astro
-    ├── Testimonials.astro
-    ├── CTAFinal.astro
+    ├── QuoteModule.tsx            # React — formulario de cotización con chips + segmented control
     ├── Footer.astro
     └── WhatsAppFloat.astro
 ```
 
-Los componentes estáticos se pre-renderizan en build time (Astro). Los tres componentes React usan `client:load` para hidratar solo lo que necesita interactividad.
+Orden actual de secciones: **Nav → Hero → Marquee → Problem → BeforeAfter → Services → Instagram → Process → Quote → Footer → WhatsAppFloat**.
+
+Los componentes `.astro` se pre-renderizan en build time. Los componentes React usan `client:load` solo donde hace falta interactividad.
 
 ---
 
@@ -111,16 +107,18 @@ El tema se alterna con el botón de la nav (ícono de luna/sol). Se persiste en 
 ## Componentes interactivos
 
 ### `BeforeAfterSection.tsx`
-Comparador antes/después con tres modos intercambiables:
-- **Slider** — arrastrar el divisor
-- **Toggle** — botones Antes / Después con fade
-- **Hover** — revelar al pasar el cursor
+Comparador antes/después con slider arrastrable sobre una grilla 2×2 de habitaciones reales (living, cocina, dormitorio, oficina). Las imágenes son WebP optimizado (~1.3 MB total).
 
 ### `InstagramShowcase.tsx`
 Mockup de teléfono con carrusel de 4 slides que rota automáticamente cada 3.2 s. El primer slide es editorial (tipografía + datos), los siguientes son fotos de la propiedad.
 
+### `QuoteModule.tsx`
+Formulario de cotización a medida. Permite seleccionar uno o varios servicios (edición, carrusel Instagram, descripción, Mercado Libre) y la cantidad aproximada de fotos. Sustituye a los antiguos módulos de Pricing/Benefits/Testimonials/CTA.
+
+> **Nota:** el `onSubmit` actual solo cambia estado local — falta cablearlo a un backend real (Formspree, Netlify Forms o un endpoint propio) antes de producción.
+
 ### `Nav.tsx`
-- Scroll listener que activa el fondo glassmorphism a los 24px
+- Scroll listener que activa el fondo glassmorphism a los 24 px
 - Texto blanco sobre el hero, texto oscuro con fondo
 - Menú hamburguesa en mobile
 - Toggle dark/light mode
