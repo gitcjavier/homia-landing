@@ -1,6 +1,6 @@
-# FotoProp Studio
+# Homia
 
-Landing page para **FotoProp Studio**, estudio de edición fotográfica inmobiliaria en Santiago, Chile. Diseñada con estética editorial de revista de arquitectura.
+Landing page para **Homia Studio**, estudio de edición fotográfica inmobiliaria en Santiago, Chile. Diseñada con estética editorial de revista de arquitectura.
 
 ![Hero](https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop)
 
@@ -129,4 +129,4 @@ Mockup de teléfono con carrusel de 4 slides que rota automáticamente cada 3.2 
 
 ## Licencia
 
-Proyecto privado — todos los derechos reservados © 2026 FotoProp Studio.
+Proyecto privado — todos los derechos reservados © 2026 Homia Studio.

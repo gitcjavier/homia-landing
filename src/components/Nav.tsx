@@ -39,9 +39,9 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
       <a href="#top" className="brand" style={{ color: brandColor }}>
-        <span className="brand-mark">F</span>
+        <span className="brand-mark">H</span>
         <span>
-          FotoProp <i style={{ fontStyle: 'italic', opacity: 0.7 }}>Studio</i>
+          Homia <i style={{ fontStyle: 'italic', opacity: 0.7 }}>Studio</i>
         </span>
       </a>
 

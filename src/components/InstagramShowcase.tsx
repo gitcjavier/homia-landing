@@ -68,16 +68,16 @@ export default function InstagramShowcase() {
                 <div className="phone-screen">
                   <div className="phone-notch" />
                   <div className="ig-bar">
-                    <span>FotoProp Studio</span>
+                    <span>Homia Studio</span>
                     <span style={{ fontSize: 18 }}>+</span>
                   </div>
 
                   <div className="ig-post-head">
                     <div className="ig-avatar">
-                      <div>F</div>
+                      <div>H</div>
                     </div>
                     <div className="ig-handle">
-                      fotoprop.studio
+                      homia
                       <small>Patrocinado · Santiago</small>
                     </div>
                     <div style={{ fontSize: 16, color: '#888' }}>···</div>
@@ -149,7 +149,7 @@ export default function InstagramShowcase() {
                   </div>
 
                   <div className="ig-caption">
-                    <b>fotoprop.studio</b> Departamento luminoso en Las Condes, listo para mudarse.
+                    <b>homia</b> Departamento luminoso en Las Condes, listo para mudarse.
                     Terraza poniente con vista despejada y excelente conectividad…
                     <span className="meta">Hace 2 horas</span>
                   </div>
