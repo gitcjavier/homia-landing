@@ -23,7 +23,7 @@ Landing page para **Homia Studio**, estudio de edición fotográfica inmobiliari
 - **Antes / Después** con slider arrastrable (4 habitaciones reales, WebP)
 - **Mockup de Instagram** con carrusel auto-rotante (4 slides)
 - **Cotizador a medida** — formulario con chips de servicios y segmented control de cantidad de fotos
-- **Secciones:** Problema, Antes/Después, Servicios, Instagram, Proceso, Cotización
+- **Secciones:** Problema, Antes/Después, Servicios, Instagram, Cotización
 - **Dark mode / Light mode** con toggle en la nav, persistido en `localStorage`
 - **Nav adaptativa:** texto blanco sobre el hero oscuro, glassmorphism al hacer scroll
 - **Botón flotante de WhatsApp**
@@ -66,13 +66,12 @@ src/
     ├── BeforeAfterSection.tsx     # React — comparador slider arrastrable
     ├── Services.astro
     ├── InstagramShowcase.tsx      # React — carrusel auto-rotante en mockup iPhone
-    ├── Process.astro
     ├── QuoteModule.tsx            # React — formulario de cotización con chips + segmented control
     ├── Footer.astro
     └── WhatsAppFloat.astro
 ```
 
-Orden actual de secciones: **Nav → Hero → Marquee → Problem → BeforeAfter → Services → Instagram → Process → Quote → Footer → WhatsAppFloat**.
+Orden actual de secciones: **Nav → Hero → Marquee → Problem → BeforeAfter → Services → Instagram → Quote → Footer → WhatsAppFloat**.
 
 Los componentes `.astro` se pre-renderizan en build time. Los componentes React usan `client:load` solo donde hace falta interactividad.
 

@@ -52,9 +52,6 @@ export default function Nav() {
         <a href="#trabajos" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
           Trabajos
         </a>
-        <a href="#proceso" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
-          Proceso
-        </a>
         <a href="#cotizar" onClick={() => setMenuOpen(false)} style={{ color: linkColor }}>
           Cotizar
         </a>

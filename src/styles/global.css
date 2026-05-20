@@ -695,51 +695,6 @@ section { position: relative; }
   margin-top: 12px;
 }
 
-/* Process */
-.process-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--line);
-}
-.process-step {
-  padding: 40px 32px 40px 0;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.process-step:not(:last-child) { border-right: 1px solid var(--line); padding-right: 32px; }
-.process-step + .process-step { padding-left: 32px; }
-.process-num {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--green);
-}
-.process-step h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: -.015em;
-  font-weight: 380;
-}
-.process-step p {
-  font-size: 14.5px;
-  color: var(--ink-2);
-  line-height: 1.6;
-}
-.process-step .pico {
-  width: 32px; height: 32px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: var(--green);
-  margin-top: 8px;
-}
-
 /* Carousel / Instagram showcase */
 .ig-section {
   background: var(--bg);
@@ -1611,7 +1566,6 @@ footer {
   .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
   .tg { grid-template-columns: 1fr; }
   .ig-grid { grid-template-columns: 1fr; }
-  .process-list { grid-template-columns: repeat(2, 1fr); }
   .benefit-grid { grid-template-columns: repeat(2, 1fr); }
   .ba-grid { grid-template-columns: 1fr; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1638,9 +1592,6 @@ footer {
   }
   .nav-toggle { display: grid; place-items: center; }
   .hero-meta .m-num { font-size: 24px; }
-  .process-list { grid-template-columns: 1fr; }
-  .process-step + .process-step { padding-left: 0; }
-  .process-step:not(:last-child) { border-right: 0; padding-right: 0; }
   .benefit-grid { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
   .service { padding: 28px; min-height: auto; }
